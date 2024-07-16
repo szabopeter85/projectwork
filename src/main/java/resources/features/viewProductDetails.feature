@@ -5,5 +5,5 @@ Feature: View Product Details
 
   Scenario: View detailed information of a product
     Given I am browsing products
-    When I click on a product name
+    When I select a specefic product
     Then I should see the product's price, description, and an add button

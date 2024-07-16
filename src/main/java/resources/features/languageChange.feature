@@ -5,10 +5,10 @@ Feature: Language Switching
 
   Scenario: Switching language to Hungarian
     Given I am on the homepage
-    When I click on the "Magyar" button
+    When I set language to "Hungarian"
     Then the page should display content in Hungarian
 
   Scenario: Switching language to English
     Given I am on the homepage
-    When I click on the "English" button
+    When I set language to "English"
     Then the page should display content in English

@@ -3,7 +3,7 @@ Feature: Checkout Process
   I want to checkout my cart to complete my purchase through the given checkout process
   So that I can purchase it and arrange it for delivery
 
-  Scenario: Complete the checkout process
+  Scenario: Completing the checkout process
     Given I have items in my shopping cart
     When I proceed to checkout
     Then I can review my cart before continuing

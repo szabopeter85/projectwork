@@ -4,5 +4,5 @@ Feature: GDPR Cookie Acceptance
 
   Scenario: Accepting GDPR cookies
     Given I am on the homepage
-    When I click on the "Minden Cookie elfogadása" button
+    When I accept cookies
     Then the GDPR cookies acceptance message should disappear

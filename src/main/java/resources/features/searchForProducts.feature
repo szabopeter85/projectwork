@@ -5,6 +5,6 @@ Feature: Search for Products
 
   Scenario: Use the search bar to find products
     Given I am on any page of the shopping site
-    When I enter a search term in the search bar
-    Then I should see a list of products matching the search term
-    And each product should display its name, price, and an option to add it to the cart
+    When I search for "alma"
+    Then I should see that the products belonging to "alma" appear
+    And 92 products are displayed with prices
