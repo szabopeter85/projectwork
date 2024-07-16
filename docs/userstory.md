@@ -1,3 +1,24 @@
+
+Title: GDPR cookie acceptance
+
+As a user
+
+I want to use the page properly so I have to accept the GDPR cookies  
+
+Acceptance Criteria:
+GDPR cookies acceptance disappear after "Minden Cookie elfogadása" button clicked 
+
+-----------------------------
+
+As a user
+
+I want to use the site in English and Hungarian, so that I can view and buy products in both English and Hungarian
+
+Acceptance Criteria:
+language switching works by clicking the "Magyar" or "English" button
+
+-----------------------------
+
 Title: Login to the page
 
 As a user
