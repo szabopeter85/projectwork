@@ -1,11 +1,13 @@
+package hu.masterfield.steps;
+
 import hu.masterfield.pages.HomePage;
+import hu.masterfield.pages.SearchResultPage;
 import io.cucumber.java.AfterAll;
+import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.jupiter.api.BeforeAll;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,7 +17,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class TescoSteps {
-     HomePage homePage;
+    HomePage homePage;
+    SearchResultPage searchResultPage;
 
     protected static WebDriver driver;
 
@@ -42,22 +45,21 @@ public class TescoSteps {
 
     @Given("I am on any page of the shopping site")
     public void iAmOnAnyPageOfTheShoppingSite() {
-        driver.get("https://bevasarlas.tesco.hu/groceries/");
-        wait.until(driver -> driver.findElement(By.className("brand-header__logo")));
+        homePage = new HomePage(driver);
     }
 
     @When("I search for {string}")
     public void iSearchFor(String searchWord) {
-        homePage = new HomePage();
-        homePage.fillSearchField(searchWord);
-
+        searchResultPage = homePage.search(searchWord);
     }
 
     @Then("I should see that the products belonging to {string} appear")
-    public void iShouldSeeThatTheProductsBelongingToAppear(String arg0) {
+    public void iShouldSeeThatTheProductsBelongingToAppear(String product) {
+        searchResultPage.checkMethod1(product);
     }
 
     @And("{int} products are displayed with prices")
-    public void productsAreDisplayedWithPrices(int arg0) {
+    public void productsAreDisplayedWithPrices(int numOfProducts) {
+        searchResultPage.checkMethod2(numOfProducts);
     }
 }

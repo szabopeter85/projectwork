@@ -1,18 +1,18 @@
 package hu.masterfield.pages;
 
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
 
     // UI elemek
-    @FindBy(xpath = "//a[@role='button' and text()='Megértettem']")
+    @FindBy(xpath = "//a[@role='button' and text()='Minden Cookie elfogadása']")
     private WebElement cookieButton;
-    //By cookieButton = By.xpath("//a[@role='button' and text()='Megértettem']");
+    //By cookieButton = By.xpath("//a[@role='button' and text()='Minden Cookie elfogadása']");
 
     @FindBy(className = "close")
     private WebElement closeBannerButton;
@@ -23,14 +23,16 @@ public class HomePage extends BasePage {
     @FindBy(css = "#mod-search-searchword + button")
     private WebElement searchButton;
 
+    @FindBy(css = "@brand-header__logo")
+    private WebElement logo;
+
     public HomePage(WebDriver inputDriver) {
         super(inputDriver);
-        PageFactory.initElements(inputDriver, this);
+        inputDriver.get("https://bevasarlas.tesco.hu/groceries/");
+        isLoaded(logo);
+        wait.until(driver -> driver.findElement(By.className("brand-header__logo")));
     }
 
-    public HomePage() {
-        super();
-    }
 
     // Metódusok
     public void clickOnCookieButton() {
@@ -44,14 +46,12 @@ public class HomePage extends BasePage {
         closeBannerButton.click();
     }
 
-    public void fillSearchField(String searchWord) {
+    public SearchResultPage search(String searchWord) {
         searchField.sendKeys(searchWord);
-    }
-
-    public SearchResultPage clickOnSearchButton() {
         searchButton.click();
         return new SearchResultPage(this.driverInPageObject);
     }
+
 
     public void load(String url) {
         driverInPageObject.get(url);
