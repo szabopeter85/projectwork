@@ -3,22 +3,22 @@ package hu.masterfield.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SearchResultPage extends BasePage {
 
-    @FindBy(xpath = "//h2[text()='Tanfolyam találatok']")
+    @FindBy(xpath = "//*[@id=\"results\"]/h1")
     private WebElement searchResultTitle;
 
-    @FindBy(className = "badge-info")
+    @FindBy(xpath = "//div[@id='product-list']//strong[2]")
     private WebElement numberOfResults;
 
-    //UI elemek
-    //By searchResultTitle = By.xpath("//h2[text()='Tanfolyam találatok']");
 
     public SearchResultPage(WebDriver inputDriver) {
         super(inputDriver);
-        PageFactory.initElements(inputDriver, this);
+        isLoaded(searchResultTitle);
     }
 
     //Metódus
@@ -31,4 +31,13 @@ public class SearchResultPage extends BasePage {
         return numberOfResults.getText();
     }
 
+    public void checkProductName(String product) {
+        assertEquals("Results for “alma”", searchResultTitle.getText());
+
+    }
+
+    public void checkProductNum(int numOfProducts) {
+        int actualNumOfProducts = Integer.parseInt(numberOfResults.getText());
+        assertTrue(actualNumOfProducts == numOfProducts, "The number of products does not match the expected value.");
+    }
 }

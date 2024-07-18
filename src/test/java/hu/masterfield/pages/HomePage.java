@@ -1,7 +1,6 @@
 package hu.masterfield.pages;
 
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,20 +16,20 @@ public class HomePage extends BasePage {
     @FindBy(className = "close")
     private WebElement closeBannerButton;
 
-    @FindBy(id = "mod-search-searchword")
+    @FindBy(xpath = "//*[@id=\"search-input\"]")
     private WebElement searchField;
 
-    @FindBy(css = "#mod-search-searchword + button")
+    @FindBy(xpath = "//*[@id=\"search-form\"]/button")
     private WebElement searchButton;
 
-    @FindBy(css = "@brand-header__logo")
+    @FindBy(className = "brand-header__logo")
     private WebElement logo;
 
     public HomePage(WebDriver inputDriver) {
         super(inputDriver);
         inputDriver.get("https://bevasarlas.tesco.hu/groceries/");
         isLoaded(logo);
-        wait.until(driver -> driver.findElement(By.className("brand-header__logo")));
+
     }
 
 

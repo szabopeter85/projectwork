@@ -55,11 +55,12 @@ public class TescoSteps {
 
     @Then("I should see that the products belonging to {string} appear")
     public void iShouldSeeThatTheProductsBelongingToAppear(String product) {
-        searchResultPage.checkMethod1(product);
+        searchResultPage.checkProductName(product);
+
     }
 
     @And("{int} products are displayed with prices")
     public void productsAreDisplayedWithPrices(int numOfProducts) {
-        searchResultPage.checkMethod2(numOfProducts);
+        searchResultPage.checkProductNum(numOfProducts);
     }
 }
