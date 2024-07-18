@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SearchResultPage extends BasePage {
 
@@ -32,12 +31,12 @@ public class SearchResultPage extends BasePage {
     }
 
     public void checkProductName(String product) {
-        assertEquals("Results for “alma”", searchResultTitle.getText());
+        assertEquals("Találatok erre “" + product + "”", searchResultTitle.getText());
 
     }
 
     public void checkProductNum(int numOfProducts) {
-        int actualNumOfProducts = Integer.parseInt(numberOfResults.getText());
-        assertTrue(actualNumOfProducts == numOfProducts, "The number of products does not match the expected value.");
+
+        assertEquals(numOfProducts + " termékből", numberOfResults.getText());
     }
 }

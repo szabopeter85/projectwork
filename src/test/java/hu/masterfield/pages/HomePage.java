@@ -27,7 +27,7 @@ public class HomePage extends BasePage {
 
     public HomePage(WebDriver inputDriver) {
         super(inputDriver);
-        inputDriver.get("https://bevasarlas.tesco.hu/groceries/");
+        inputDriver.get("https://bevasarlas.tesco.hu/groceries/hu-HU/");
         isLoaded(logo);
 
     }

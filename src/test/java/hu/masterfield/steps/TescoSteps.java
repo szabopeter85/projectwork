@@ -48,18 +48,18 @@ public class TescoSteps {
         homePage = new HomePage(driver);
     }
 
-    @When("I search for {string}")
+    @When("I search for {product}")
     public void iSearchFor(String searchWord) {
         searchResultPage = homePage.search(searchWord);
     }
 
-    @Then("I should see that the products belonging to {string} appear")
+    @Then("I should see that the products belonging to {product} appear")
     public void iShouldSeeThatTheProductsBelongingToAppear(String product) {
         searchResultPage.checkProductName(product);
 
     }
 
-    @And("{int} products are displayed with prices")
+    @And("{productNum} products are displayed with prices")
     public void productsAreDisplayedWithPrices(int numOfProducts) {
         searchResultPage.checkProductNum(numOfProducts);
     }
