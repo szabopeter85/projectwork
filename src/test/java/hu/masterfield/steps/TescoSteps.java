@@ -19,6 +19,7 @@ import java.time.Duration;
 public class TescoSteps {
     HomePage homePage;
     SearchResultPage searchResultPage;
+    SearchResultPage noResultPage;
 
     protected static WebDriver driver;
 
@@ -67,6 +68,6 @@ public class TescoSteps {
 
     @Then("I should see that there are no products listed")
     public void iShouldSeeThatThereAreNoProductsListed(String product) {
-        searchResultPage.checkNoProduct(product);
+        noResultPage.checkNoProduct(product);
     }
 }
