@@ -19,7 +19,7 @@ import java.time.Duration;
 public class TescoSteps {
     HomePage homePage;
     SearchResultPage searchResultPage;
-    SearchResultPage noResultPage;
+
 
     protected static WebDriver driver;
 
@@ -67,7 +67,21 @@ public class TescoSteps {
 
 
     @Then("I should see that there are no products listed")
-    public void iShouldSeeThatThereAreNoProductsListed(String product) {
-        noResultPage.checkNoProduct(product);
+    public void iShouldSeeThatThereAreNoProductsListed() {
+        searchResultPage.checkNoProduct();
+    }
+
+    @Given("I am on the loginpage")
+    public void iAmOnTheHomepage() {
+        h
+                omePage = new HomePage(driver);
+    }
+
+    @When("I login with my credentials {string} and {string}")
+    public void iLoginWithMyCredentialsAnd(String arg0, String arg1) {
+    }
+
+    @Then("the login page should be displayed with {string}")
+    public void theLoginPageShouldBeDisplayedWith(String arg0) {
     }
 }

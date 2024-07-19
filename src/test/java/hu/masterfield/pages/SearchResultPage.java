@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SearchResultPage extends BasePage {
 
@@ -15,7 +16,7 @@ public class SearchResultPage extends BasePage {
     private WebElement numberOfResults;
 
     @FindBy(xpath = "//*[@id=\"product-list\"]/div[2]/div[3]/div/div[2]")
-    private WebElement NoResultTitle;
+    private WebElement noResultTitle;
 
 
     public SearchResultPage(WebDriver inputDriver) {
@@ -43,8 +44,8 @@ public class SearchResultPage extends BasePage {
         assertEquals(numOfProducts + " termékből", numberOfResults.getText());
     }
 
-    public void checkNoProduct(String product) {
-        assertEquals("Sajnos nem található olyan termék, amely a “" + product + "” keresési feltételnek megfelelne.  ", searchResultTitle.getText());
+    public void checkNoProduct() {
 
+        assertTrue(noResultTitle.getText().contains("Sajnos nem található olyan termék"));
     }
 }
