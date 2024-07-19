@@ -73,8 +73,7 @@ public class TescoSteps {
 
     @Given("I am on the loginpage")
     public void iAmOnTheHomepage() {
-        h
-                omePage = new HomePage(driver);
+        homePage = new HomePage(driver);
     }
 
     @When("I login with my credentials {string} and {string}")
