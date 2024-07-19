@@ -14,6 +14,9 @@ public class SearchResultPage extends BasePage {
     @FindBy(xpath = "//div[@id='product-list']//strong[2]")
     private WebElement numberOfResults;
 
+    @FindBy(xpath = "//*[@id='product-list']/div[2]/div[3]/div/div[2]/h3")
+    private WebElement NoResultTitle;
+
 
     public SearchResultPage(WebDriver inputDriver) {
         super(inputDriver);
@@ -38,5 +41,10 @@ public class SearchResultPage extends BasePage {
     public void checkProductNum(int numOfProducts) {
 
         assertEquals(numOfProducts + " termékből", numberOfResults.getText());
+    }
+
+    public void checkNoProduct(String product) {
+        assertEquals("Találatok erre “" + product + "”", searchResultTitle.getText());
+
     }
 }
